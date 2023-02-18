@@ -46,7 +46,7 @@ public class Application implements Consumer<Event> {
             case WINDOWS -> window.setIcon(new File("src/main/resources/windows.ico"));
             case MACOS -> window.setIcon(new File("src/main/resources/macos.icns"));
         }
-        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!");
+        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "макима гав-гав", true,true);
         // названия слоёв, которые будем перебирать
         String[] layerNames = new String[]{
                 "LayerGLSkija", "LayerRasterSkija"

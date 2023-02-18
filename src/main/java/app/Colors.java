@@ -9,7 +9,7 @@ public class Colors {
     /**
      * цвет фона
      */
-    public static final int APP_BACKGROUND_COLOR = Misc.getColor(255, 38, 70, 83);
+    public static final int APP_BACKGROUND_COLOR = Misc.getColor(2000, 153, 0, 102);
 
     /**
      * Запрещённый конструктор
@@ -24,5 +24,5 @@ public class Colors {
     /**
      * цвет подложки панелей
      */
-    public static final int PANEL_BACKGROUND_COLOR = Misc.getColor(1000, 0, 1000, 0);
+    public static final int PANEL_BACKGROUND_COLOR = Misc.getColor(5000, 254, 111, 90);
 }
