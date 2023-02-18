@@ -1,18 +1,17 @@
 package app;
 
+import controls.Label;
 import io.github.humbleui.jwm.*;
 import io.github.humbleui.jwm.skija.EventFrameSkija;
 import io.github.humbleui.skija.Canvas;
-import io.github.humbleui.skija.Paint;
-import io.github.humbleui.skija.RRect;
 import io.github.humbleui.skija.Surface;
-import misc.CoordinateSystem2i;
-import misc.Misc;
+import panels.misc.CoordinateSystem2i;
 
 import java.io.File;
 import java.util.function.Consumer;
 
 import static app.Colors.APP_BACKGROUND_COLOR;
+import static app.Colors.PANEL_BACKGROUND_COLOR;
 
 /**
  * Класс окна приложения
@@ -47,7 +46,7 @@ public class Application implements Consumer<Event> {
             case WINDOWS -> window.setIcon(new File("src/main/resources/windows.ico"));
             case MACOS -> window.setIcon(new File("src/main/resources/macos.icns"));
         }
-
+        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "Привет, мир!");
         // названия слоёв, которые будем перебирать
         String[] layerNames = new String[]{
                 "LayerGLSkija", "LayerRasterSkija"
@@ -68,9 +67,12 @@ public class Application implements Consumer<Event> {
         // если окну не присвоен ни один из слоёв
         if (window._layer == null)
             throw new RuntimeException("Нет доступных слоёв для создания");
+        // рисуем заголовок в точке [100,100] с шириной и выостой 200
+
 
         // делаем окно видимым
         window.setVisible(true);
+
     }
 
     /**
@@ -98,27 +100,15 @@ public class Application implements Consumer<Event> {
      * @param canvas   низкоуровневый инструмент рисования примитивов от Skija
      * @param windowCS СК окна
      */
+
     public void paint(Canvas canvas, CoordinateSystem2i windowCS) {
+
         // запоминаем изменения (пока что там просто заливка цветом)
         canvas.save();
         // очищаем канвас
         canvas.clear(APP_BACKGROUND_COLOR);
-
-        // восстанавливаем состояние канваса
-        canvas.restore();
-        // координаты левого верхнего края окна
-        int rX = windowCS.getSize().x / 3;
-        int rY = windowCS.getSize().y / 3;
-        // ширина и высота
-        int rWidth =  windowCS.getSize().x  / 3;
-        int rHeight = windowCS.getSize().y  / 3;
-        // создаём кисть
-        Paint paint = new Paint();
-        // задаём цвет рисования
-        paint.setColor(Misc.getColor(100, 255, 255, 255));
-        // рисуем квадрат
-        canvas.drawRRect(RRect.makeXYWH(rX, rY, rWidth, rHeight, 4), paint);
-
+        // рисуем заголовок
+        label.paint(canvas, new CoordinateSystem2i(100, 100, 200, 200));
         // восстанавливаем состояние канваса
         canvas.restore();
     }
@@ -126,4 +116,11 @@ public class Application implements Consumer<Event> {
      * радиус скругления элементов
      */
     public static final int C_RAD_IN_PX = 4;
+    /**
+     * отступы панелей
+     */
+    /**
+     * Первый заголовок
+     */
+    private final Label label;
 }

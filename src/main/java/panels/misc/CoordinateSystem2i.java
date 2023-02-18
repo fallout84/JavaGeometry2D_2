@@ -1,4 +1,4 @@
-package misc;
+package panels.misc;
 
 import io.github.humbleui.skija.RRect;
 import io.github.humbleui.skija.Rect;

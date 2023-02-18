@@ -1,4 +1,4 @@
-package misc;
+package panels.misc;
 
 /**
  * Вспомогательная библиотека

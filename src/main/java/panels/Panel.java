@@ -3,7 +3,7 @@ package panels;
 import io.github.humbleui.jwm.*;
 import io.github.humbleui.skija.Canvas;
 import io.github.humbleui.skija.Paint;
-import misc.CoordinateSystem2i;
+import panels.misc.CoordinateSystem2i;
 
 import java.util.function.Consumer;
 
