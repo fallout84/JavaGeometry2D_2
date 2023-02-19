@@ -3,7 +3,7 @@ package panels;
 import io.github.humbleui.jwm.*;
 import io.github.humbleui.skija.Canvas;
 import io.github.humbleui.skija.Paint;
-import panels.misc.CoordinateSystem2i;
+import misc.CoordinateSystem2i;
 
 import java.util.function.Consumer;
 
@@ -74,7 +74,7 @@ public abstract class Panel implements Consumer<Event> {
     }
 
     /**
-     * Метод рисованияв конкретной реализации
+     * Метод под рисование в конкретной реализации
      *
      * @param canvas   область рисования
      * @param windowCS СК окна

@@ -5,7 +5,7 @@ import io.github.humbleui.jwm.*;
 import io.github.humbleui.jwm.skija.EventFrameSkija;
 import io.github.humbleui.skija.Canvas;
 import io.github.humbleui.skija.Surface;
-import panels.misc.CoordinateSystem2i;
+import misc.CoordinateSystem2i;
 
 import java.io.File;
 import java.util.function.Consumer;
@@ -25,6 +25,23 @@ public class Application implements Consumer<Event> {
      * отступы панелей
      */
     private static final int PANEL_PADDING = 5;
+    /**
+     * радиус скругления элементов
+     */
+    public static final int C_RAD_IN_PX = 4;
+    /**
+     * Первый заголовок
+     */
+    private final Label label;
+    /**
+     * Первый заголовок
+     */
+    private final Label label2;
+    /**
+     * Первый заголовок
+     */
+    private final Label label3;
+
 
     /**
      * Конструктор окна приложения
@@ -32,6 +49,21 @@ public class Application implements Consumer<Event> {
     public Application() {
         // создаём окно
         window = App.makeWindow();
+
+        // создаём первый заголовок
+        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING,
+                5, 5, 1, 1, 1, 1, "Я люблю макиму", true, true);
+
+        // создаём второй заголовок
+        label2 = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING,
+                4, 4, 0, 3, 1, 1, "Макима гав-гав", true, true);
+
+        // создаём третий заголовок
+        label3 = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING,
+                7, 7, 0, 4, 7, 1, "Нет достаточно красивого цвета," +
+                " чтобы выразить моё чувство", true, true);
+
+
         // задаём обработчиком событий текущий объект
         window.setEventListener(this);
         // задаём заголовок
@@ -46,7 +78,7 @@ public class Application implements Consumer<Event> {
             case WINDOWS -> window.setIcon(new File("src/main/resources/windows.ico"));
             case MACOS -> window.setIcon(new File("src/main/resources/macos.icns"));
         }
-        label = new Label(window, true, PANEL_BACKGROUND_COLOR, PANEL_PADDING, "макима гав-гав", true,true);
+
         // названия слоёв, которые будем перебирать
         String[] layerNames = new String[]{
                 "LayerGLSkija", "LayerRasterSkija"
@@ -67,12 +99,9 @@ public class Application implements Consumer<Event> {
         // если окну не присвоен ни один из слоёв
         if (window._layer == null)
             throw new RuntimeException("Нет доступных слоёв для создания");
-        // рисуем заголовок в точке [100,100] с шириной и выостой 200
-
 
         // делаем окно видимым
         window.setVisible(true);
-
     }
 
     /**
@@ -108,19 +137,21 @@ public class Application implements Consumer<Event> {
         // очищаем канвас
         canvas.clear(APP_BACKGROUND_COLOR);
         // рисуем заголовок
-        label.paint(canvas, new CoordinateSystem2i(100, 100, 200, 200));
+        label.paint(canvas, windowCS);
+        label2.paint(canvas, windowCS);
+        label3.paint(canvas, windowCS);
         // восстанавливаем состояние канваса
         canvas.restore();
     }
     /**
      * радиус скругления элементов
      */
-    public static final int C_RAD_IN_PX = 4;
+
     /**
      * отступы панелей
      */
     /**
      * Первый заголовок
      */
-    private final Label label;
+
 }

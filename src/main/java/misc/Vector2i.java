@@ -1,4 +1,4 @@
-package panels.misc;
+package misc;
 
 import io.github.humbleui.jwm.Event;
 import io.github.humbleui.jwm.EventMouseMove;

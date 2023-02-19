@@ -1,4 +1,4 @@
-package panels.misc;
+package misc;
 
 import io.github.humbleui.skija.RRect;
 import io.github.humbleui.skija.Rect;
@@ -143,7 +143,6 @@ public class CoordinateSystem2i {
     public String toString() {
         return "CoordinateSystem2i{" + min + ", " + max + '}';
     }
-
 
     /**
      * Проверка двух объектов на равенство
