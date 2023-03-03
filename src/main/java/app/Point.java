@@ -51,8 +51,8 @@ public class Point {
      */
     public int getColor() {
         return switch (pointSet) {
-            case FIRST_SET -> Misc.getColor(1000, 255, 0, 112);
-            case SECOND_SET -> Misc.getColor(1000, 75, 0, 130);
+            case FIRST_SET -> Misc.getColor(255, 255, 0, 112);
+            case SECOND_SET -> Misc.getColor(255, 0, 102, 102);
         };
     }
 
