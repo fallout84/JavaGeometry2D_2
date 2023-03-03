@@ -50,6 +50,10 @@ public class Application implements Consumer<Event> {
     /**
      * Конструктор окна приложения
      */
+    /**
+     * Представление проблемы
+     */
+    public static Task task;
     public Application() {
         // создаём окно
         window = App.makeWindow();
@@ -156,15 +160,4 @@ public class Application implements Consumer<Event> {
         // восстанавливаем состояние канваса
         canvas.restore();
     }
-    /**
-     * радиус скругления элементов
-     */
-
-    /**
-     * отступы панелей
-     */
-    /**
-     * Первый заголовок
-     */
-
 }
