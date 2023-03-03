@@ -6,6 +6,7 @@ import io.github.humbleui.jwm.skija.EventFrameSkija;
 import io.github.humbleui.skija.Canvas;
 import io.github.humbleui.skija.Surface;
 import misc.CoordinateSystem2i;
+import misc.Vector2i;
 import panels.PanelControl;
 import panels.PanelHelp;
 import panels.PanelLog;
@@ -134,17 +135,28 @@ public class Application implements Consumer<Event> {
         } else if (e instanceof EventWindowCloseRequest) {
             window.close();
         } else if (e instanceof EventFrameSkija ee) {
+            // получаем поверхность рисования
             Surface s = ee.getSurface();
+            // очищаем её канвас заданным цветом
             paint(s.getCanvas(), new CoordinateSystem2i(s.getWidth(), s.getHeight()));
         }
+        panelControl.accept(e);
+        panelRendering.accept(e);
+        panelLog.accept(e);
     }
 
     /**
-     * Рисование
-     *
-     * @param canvas   низкоуровневый инструмент рисования примитивов от Skija
-     * @param windowCS СК окна
+     * последнее движение мыши
      */
+    protected Vector2i lastMove = new Vector2i(0, 0);
+    /**
+     * было ли оно внутри панели
+     */
+    protected boolean lastInside = false;
+    /**
+     * последняя СК окна
+     */
+    protected CoordinateSystem2i lastWindowCS;
 
     public void paint(Canvas canvas, CoordinateSystem2i windowCS) {
 
