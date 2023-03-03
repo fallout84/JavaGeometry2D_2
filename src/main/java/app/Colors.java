@@ -22,7 +22,7 @@ public class Colors {
      */
     public static final int LABEL_TEXT_COLOR = Misc.getColor(1000, 0, 0, 0);
     /**
-     * цвет подложки панелей
+     * цвет подложки панелейMisc.getColor(2000, 153, 0, 102);
      */
     public static final int PANEL_BACKGROUND_COLOR = Misc.getColor(5000, 254, 111, 90);
 }
