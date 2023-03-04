@@ -8,7 +8,7 @@ public class Main {
     /**
      * Главный метод приложения
      *
-     * @param args аргументы командной строки
+     * @param args аргументы командной строки или нет
      */
     public static void main(String[] args) {
         App.start(Application::new);
