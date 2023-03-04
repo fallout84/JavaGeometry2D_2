@@ -9,7 +9,7 @@ public class Colors {
     /**
      * цвет фона
      */
-    public static final int APP_BACKGROUND_COLOR = Misc.getColor(200, 102, 0, 102);
+    public static final int APP_BACKGROUND_COLOR = Misc.getColor(102, 204, 0, 204);
 
     /**
      * Запрещённый конструктор
@@ -29,4 +29,12 @@ public class Colors {
      * Цвет текста
      */
     public static final int MULTILINE_TEXT_COLOR = Misc.getColor(255, 0, 0, 1);
+    /**
+     * Цвет подложки поля ввода
+     */
+    public static final int FIELD_BACKGROUND_COLOR = Misc.getColor(255, 255, 255, 255);
+    /**
+     * Цвет текста
+     */
+    public static final int FIELD_TEXT_COLOR = Misc.getColor(255, 0, 0, 0);
 }

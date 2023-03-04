@@ -60,13 +60,21 @@ public class PanelRendering extends GridPanel {
         task = new Task(cs, points);
 
     }
+    /**
+     * Сохранить файл
+     */
+    public static void save() {
+        PanelLog.info("save");
+    }
 
     /**
-     * Обработчик событий
-     *
-     * @param e событие
+     * Загрузить файл
      */
-    /**
+    public static void load() {
+        PanelLog.info("load");
+    }
+
+     /**
      * Обработчик событий
      * при перегрузке обязателен вызов реализации предка
      *
@@ -74,21 +82,18 @@ public class PanelRendering extends GridPanel {
      */
     @Override
     public void accept(Event e) {
-        // вызов обработчика предка
+        // вызываем обработчик предка
         super.accept(e);
-        // если событие - это клик мышью
         if (e instanceof EventMouseButton ee) {
+            // если последнее положение мыши сохранено и курсор был внутри
             if (lastMove != null && lastInside) {
                 // если событие - нажатие мыши
                 if (ee.isPressed())
-                // обрабатываем клик по задаче
-                task.click(lastWindowCS.getRelativePos(lastMove), ee.getButton());
-                // перерисовываем окно
-                window.requestFrame();
+                    // обрабатываем клик по задаче
+                    task.click(lastWindowCS.getRelativePos(lastMove), ee.getButton());
             }
         }
     }
-
     /**
      * Метод под рисование в конкретной реализации
      *
