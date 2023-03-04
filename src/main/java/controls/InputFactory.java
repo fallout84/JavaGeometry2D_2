@@ -34,6 +34,14 @@ public class InputFactory {
             }
         }, 0, 500);
     }
+    /**
+     * Снять фокус со всех полей ввода
+     */
+    public static void defocusAll() {
+        // снимаем фокусы
+        for (Input input : inputs)
+            input.focused = false;
+    }
 
     /**
      * Получить новое поле ввода
