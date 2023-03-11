@@ -78,6 +78,24 @@ public class Task {
         canvas.restore();
     }
     /**
+     * Очистить задачу
+     */
+    public void clear() {
+        points.clear();
+    }
+    /**
+     * Решить задачу
+     */
+    public void solve() {
+        PanelLog.warning("Вызван метод solve()\n Пока что решения нет");
+    }
+    /**
+     * Отмена решения задачи
+     */
+    public void cancel() {
+
+    }
+    /**
      * Добавить случайные точки
      *
      * @param cnt кол-во случайных точек
