@@ -47,7 +47,10 @@ public class PanelRendering extends GridPanel {
         CoordinateSystem2d cs = new CoordinateSystem2d(
                 new Vector2d(-10.0, -10.0), new Vector2d(10.0, 10.0)
         );
-
+// создаём задачу без точек
+        task = new Task(cs, new ArrayList<>());
+        // добавляем в нё 8 случайных
+        task.addRandomPoints(8);
         // создаём массив случайных точек
         ArrayList<Point> points = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
