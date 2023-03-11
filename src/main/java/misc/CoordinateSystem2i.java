@@ -1,5 +1,8 @@
 package misc;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.humbleui.skija.RRect;
 import io.github.humbleui.skija.Rect;
 
@@ -52,10 +55,6 @@ public class CoordinateSystem2i {
      *
      * @return случайные координаты внутри СК
      */
-    public Vector2i getRandomCoords() {
-        return Vector2i.rand(min, max);
-    }
-
     /**
      * Возвращает относительное положение вектора в СК
      *
@@ -129,18 +128,15 @@ public class CoordinateSystem2i {
      *
      * @return размер СК
      */
-    public Vector2i getSize() {
-        return size;
-    }
     /**
-     * Получить координаты вектора в текущей системе координат
+     * Конструктор ограниченной двумерной целочисленной системы координат
      *
-     * @param coords           координаты вектора в другой системе координат
-     * @param coordinateSystem система координат, в которой заданы координаты вектора
-     * @return моя жизнь неоч(
+     * @param min минимальные координаты
+     * @param max максимальные координаты
      */
-    public Vector2i getCoords(Vector2d coords, CoordinateSystem2d coordinateSystem) {
-        return getCoords(coords.x, coords.y, coordinateSystem);
+    @JsonCreator
+    public CoordinateSystem2i(@JsonProperty("min") Vector2i min, @JsonProperty("max") Vector2i max) {
+        this(min.x, min.y, max.x - min.x, max.y - min.x);
     }
 
     /**
@@ -221,5 +217,23 @@ public class CoordinateSystem2i {
         int result = max != null ? max.hashCode() : 0;
         result = 31 * result + (min != null ? min.hashCode() : 0);
         return result;
+    }
+    /**
+     * Получить случайные координаты внутри СК
+     *
+     * @return случайные координаты внутри СК
+     */
+    @JsonIgnore
+    public Vector2i getRandomCoords() {
+        return Vector2i.rand(min, max);
+    }
+    /**
+     * Получить размер СК
+     *
+     * @return размер СК
+     */
+    @JsonIgnore
+    public Vector2i getSize() {
+        return size;
     }
 }

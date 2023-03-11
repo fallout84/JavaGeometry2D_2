@@ -91,6 +91,7 @@ public class PanelControl extends GridPanel {
             } else
                 PanelRendering.task.addRandomPoints(cntField.intValue());
         });
+
         buttons.add(addPoints);
 
         Label xLabel = new Label(window, false, backgroundColor, PANEL_PADDING,
@@ -152,6 +153,7 @@ public class PanelControl extends GridPanel {
             PanelRendering.load();
             cancelTask();
         });
+
         buttons.add(load);
 
         Button save = new Button(
@@ -173,7 +175,13 @@ public class PanelControl extends GridPanel {
                 6, 7, 3, 6, 3, 1, "Решить",
                 true, true);
         solve.setOnClick(() -> {
-            PanelRendering.task.solve();
+            if (!PanelRendering.task.isSolved()) {
+                PanelRendering.task.solve();
+                solve.text = "Сбросить";
+            } else {
+                cancelTask();
+            }
+            window.requestFrame();
         });
         buttons.add(solve);
     }
@@ -249,6 +257,7 @@ public class PanelControl extends GridPanel {
         // Задаём новый текст кнопке решения
         solve.text = "Решить";
     }
+
     /**
      * Метод под рисование в конкретной реализации
      *
