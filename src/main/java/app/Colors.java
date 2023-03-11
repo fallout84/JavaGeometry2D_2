@@ -41,4 +41,12 @@ public class Colors {
      * Цвет кнопки
      */
     public static final int BUTTON_COLOR = Misc.getColor(80, 0, 0, 0);
+    /**
+     * Цвет пересечения
+     */
+    public static final int CROSSED_COLOR = Misc.getColor(255, 205,	38, 130);
+    /**
+     * Цвет разности
+     */
+    public static final int SUBTRACTED_COLOR = Misc.getColor(255, 14, 41, 75);
 }
